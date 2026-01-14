@@ -1,3 +1,6 @@
+## `.gitignore`
+
+```gitignore
 # Python
 __pycache__/
 *.py[cod]
@@ -12,7 +15,7 @@ __pycache__/
 venv/
 ENV/
 
-# Mac
+# macOS
 .DS_Store
 
 # uv

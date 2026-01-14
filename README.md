@@ -1,82 +1,72 @@
-
 # CDT Visualisation Workshop
 
+## Overview
 Examples of visualisation practices for scientific communication and Python visualisation libraries.
+
+---
 
 ## Notebooks
 
-1. Zou et al. (2023) - GPT-4 Performance Drift
-2. Gemini vs GPT-4 - Benchmark Comparison
-3. Holmes et al. - COVID-19 ROC Curve
-4. Kim et al. (2023) - Enzyme Classification Validation
+- Zou et al. (2023) — GPT-4 Performance Drift
+- Gemini vs GPT-4 — Benchmark Comparison
+- Holmes et al. — COVID-19 ROC Curve
+- Kim et al. (2023) — Enzyme Classification Validation
+
+---
 
 ## Setup (Pure `uv`)
 
-We use [uv](https://github.com/astral-sh/uv) for lightning-fast setup.
+We use `uv` for lightning-fast, reproducible environment setup.
 
-### 1. Install uv
-If you don't have `uv` installed, get it here:
+### 1. Install `uv`
 
+If you do not already have `uv` installed:
 
-```
+```bash
+# macOS / Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+````
 
-# MacOS / Linux install command
-
-curl -LsSf [https://astral.sh/uv/install.sh](https://astral.sh/uv/install.sh) | sh
-
-```
+---
 
 ### 2. Clone & Sync
 
-
-```
-
+```bash
 # Clone the repository
-
-git clone [https://github.com/davidnarganes/cdt-viz.git](https://www.google.com/search?q=https://github.com/davidnarganes/cdt-viz.git)
+git clone https://github.com/davidnarganes/cdt-viz.git
 cd cdt-viz
 
-# Creates the virtual environment and installs all locked dependencies from uv.lock
-
+# Create the virtual environment and install locked dependencies
 uv sync
-
 ```
+
+---
 
 ### 3. Run
-You can launch Jupyter directly through `uv` without manually activating the environment:
 
+Launch Jupyter directly inside the managed environment (no manual activation required):
 
-```
-
-# Run Jupyter Notebook inside the managed environment
-
+```bash
 uv run jupyter notebook
-
 ```
+
+---
 
 ## Maintenance: Cleaning Notebooks
 
-To keep the repository clean, we strip output metadata and images before committing.
+To keep the repository clean and reviewable, all output metadata and embedded images are stripped before committing.
 
-Manual Clean:
+### Manual Cleaning
 
-
-```
-
-# Strip output from all notebooks in the notebooks folder
-
+```bash
+# Strip output from all notebooks in the notebooks directory
 uv run nbstripout notebooks/*.ipynb
-
 ```
 
-Automatic Setup (Git Hook):
-To automatically clean notebooks every time you `git commit`:
+### Automatic Setup (Git Hook)
 
+Install a Git hook to clean notebooks automatically on every commit:
 
-```
-
-# Install the git hook so you don't have to remember to clean manually
-
+```bash
 uv run nbstripout --install
-
 ```
